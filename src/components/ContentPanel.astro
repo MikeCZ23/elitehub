@@ -1,0 +1,60 @@
+---
+import type { Props } from "@astrojs/starlight/props"
+import Default from "@astrojs/starlight/components/ContentPanel.astro"
+
+const headerImageUrlFromProps = Astro.props.entry.data.head.find(
+	({ tag, attrs }) => tag === "meta" && attrs.name === "header-image"
+)?.attrs.content as string | undefined
+
+const headerImageUrl = headerImageUrlFromProps ? `url("${headerImageUrlFromProps}")` : null
+const headerHeight = headerImageUrlFromProps ? "300px" : "auto"
+---
+
+<div class="custom-panel-wrapper">
+	<Default {...Astro.props}>
+		<slot />
+	</Default>
+</div>
+
+<style
+	define:vars={{
+		headerImageUrl,
+		headerHeight,
+	}}
+>
+	:root {
+		--header-image-gradient-color: rgba(0, 0, 0, 0.15);
+	}
+	.custom-panel-wrapper:first-child:not(:last-child) {
+		background-image: -webkit-gradient(
+				linear,
+				left top,
+				left bottom,
+				from(var(--header-image-gradient-color))
+			),
+			var(--headerImageUrl);
+		background-position: center center;
+		background-size: cover;
+		height: var(--headerHeight);
+	}
+
+	:global(
+			.custom-panel-wrapper:first-child:not(:last-child) > .content-panel
+		) {
+		height: 100%;
+		display: flex;
+		align-items: end;
+	}
+
+	:global(
+			.custom-panel-wrapper:first-child:not(:last-child)
+				> .content-panel
+				> .sl-container
+		) {
+		width: 100%;
+	}
+
+	.custom-panel-wrapper + .custom-panel-wrapper {
+		border-top: 1px solid var(--sl-color-hairline);
+	}
+</style>
