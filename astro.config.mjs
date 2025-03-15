@@ -33,6 +33,20 @@ export default defineConfig({
             icon: 'open-book',
             items: ['wiki/introduction'],
           },
+          {
+            label: 'Návody',
+            link: '/guides/introduction',
+            icon: 'puzzle',
+            items: [
+              'guides/introduction',
+              {
+                label: 'Profesie',
+                autogenerate: {
+                  directory: '/guides/professions',
+                },
+              },
+            ],
+          },
         ]),
         starlightThemeRapidePlugin(),
       ],
