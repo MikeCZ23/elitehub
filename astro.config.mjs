@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import starlightThemeRapidePlugin from 'starlight-theme-rapide'
+import starlightSidebarTopicsPlugin from 'starlight-sidebar-topics'
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +19,23 @@ export default defineConfig({
         ThemeProvider: './src/components/ThemeProvider.astro',
         ThemeSelect: './src/components/ThemeSelect.astro',
       },
-      plugins: [starlightThemeRapidePlugin()],
+      plugins: [
+        starlightSidebarTopicsPlugin([
+          {
+            label: 'Pre začiatočníkov',
+            link: '/beginners/introduction',
+            icon: 'rocket',
+            items: ['beginners/introduction'],
+          },
+          {
+            label: 'Wiki',
+            link: '/wiki/introduction',
+            icon: 'open-book',
+            items: ['wiki/introduction'],
+          },
+        ]),
+        starlightThemeRapidePlugin(),
+      ],
       social: {
         discord: 'https://discord.gg/invite/a7Zsx6a',
         github: 'https://github.com/jovanblazek/elitehub',
@@ -32,19 +49,6 @@ export default defineConfig({
           lang: 'sk',
         },
       },
-      sidebar: [
-        {
-          label: 'Guides',
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
-          ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
-        },
-      ],
     }),
   ],
 })
