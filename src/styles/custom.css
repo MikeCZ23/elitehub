@@ -1,0 +1,6 @@
+:root, ::backdrop {
+  --sl-hue-accent: 61.6 !important;
+  --sl-color-accent-low: oklch(19% 0.02 var(--sl-hue-accent)) !important;
+  --sl-color-accent: oklch(65.19% 0.176 var(--sl-hue-accent)) !important;
+  --sl-color-accent-high:  oklch(76.19% 0.176 var(--sl-hue-accent)) !important;
+}

@@ -1,12 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeRapidePlugin from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'Elitehub',
+			customCss: ['./src/styles/custom.css'],
+			plugins: [starlightThemeRapidePlugin()],
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
