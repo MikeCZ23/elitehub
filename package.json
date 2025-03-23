@@ -14,6 +14,7 @@
     "@astrojs/starlight": "^0.32.2",
     "astro": "^5.1.5",
     "sharp": "^0.32.5",
+    "starlight-image-zoom": "^0.11.1",
     "starlight-sidebar-topics": "^0.5.1",
     "starlight-theme-rapide": "^0.4.0"
   },

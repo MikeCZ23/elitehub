@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import starlightThemeRapidePlugin from 'starlight-theme-rapide'
 import starlightSidebarTopicsPlugin from 'starlight-sidebar-topics'
+import starlightImageZoomPlugin from 'starlight-image-zoom'
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,9 @@ export default defineConfig({
         ThemeSelect: './src/components/ThemeSelect.astro',
       },
       plugins: [
+        starlightImageZoomPlugin({
+          showCaptions: true,
+        }),
         starlightSidebarTopicsPlugin([
           {
             label: 'Pre začiatočníkov',
@@ -52,6 +56,7 @@ export default defineConfig({
       ],
       social: {
         discord: 'https://discord.gg/invite/a7Zsx6a',
+        youtube: 'https://www.youtube.com/channel/UCRxMAY5KbBh_RsKhxbefeLg',
         github: 'https://github.com/jovanblazek/elitehub',
       },
       editLink: {
